@@ -1,18 +1,17 @@
 package com.edstem.contract.response;
 
-import com.edstem.constant.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class BookingResponse {
+public class TaxiResponse {
     private long id;
-    private double fare;
-    private Status status;
-
+    private String driverName;
+    private String licenseNumber;
+    private String currentLocation;
 }

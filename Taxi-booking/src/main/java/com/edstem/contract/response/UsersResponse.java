@@ -1,18 +1,17 @@
 package com.edstem.contract.response;
 
-import com.edstem.constant.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Data
 @Builder
-public class BookingResponse {
-    private long id;
-    private double fare;
-    private Status status;
-
+public class UsersResponse {
+    private Long id;
+    private String name;
 }

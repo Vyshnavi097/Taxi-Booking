@@ -1,10 +1,9 @@
 package com.edstem.repository;
 
-import com.edstem.model.Users;
+import com.edstem.model.Taxi;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users,Long> {
-    boolean existsByEmail(String email);
+public interface TaxiRepository extends JpaRepository<Taxi,Long> {
 }

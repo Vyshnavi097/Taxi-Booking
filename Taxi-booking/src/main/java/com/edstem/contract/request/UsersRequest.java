@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Data
 @Builder
-public class SignupRequest {
+public class UsersRequest {
     private String name;
     private String password;
     @Email
