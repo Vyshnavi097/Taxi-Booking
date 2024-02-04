@@ -5,11 +5,12 @@ import com.edstem.contract.response.TaxiResponse;
 import com.edstem.model.Taxi;
 import com.edstem.repository.TaxiRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TaxiService {
     private final TaxiRepository taxiRepository;
     private final ModelMapper modelMapper;

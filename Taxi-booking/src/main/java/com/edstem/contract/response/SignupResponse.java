@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -11,7 +12,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Data
 @Builder
-public class UsersResponse {
+@Getter
+public class SignupResponse {
     private Long id;
     private String name;
 }

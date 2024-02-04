@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -12,7 +13,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Data
 @Builder
-public class UsersRequest {
+@Getter
+public class SignupRequest {
     private String name;
     private String password;
     @Email

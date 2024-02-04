@@ -27,7 +27,7 @@ public class BookingController {
 
     @PostMapping("/booking")
 
-  public BookingResponse booking(@RequestBody BookingRequest bookingRequest, @RequestParam long userId,@RequestParam long taxiId,@RequestParam double distance){
+  public BookingResponse booking(@RequestBody BookingRequest bookingRequest, @RequestParam long userId,@RequestParam long taxiId,@RequestParam Double distance){
       return bookingService.bookingg(bookingRequest,userId,taxiId,distance);
   }
   @GetMapping("/booking/{id}")
@@ -35,8 +35,8 @@ public class BookingController {
         return bookingService.bookingById(id);
   }
 
-  @DeleteMapping("/cancel/{bookingId}")
-    public CancelBookingResponse cancelById(@PathVariable long bookingId,@PathVariable long userId){
+  @DeleteMapping("/cancel")
+    public CancelBookingResponse cancelById(@RequestParam long bookingId,@RequestParam long userId){
         return bookingService.cancelById(bookingId,userId);
   }
 }
