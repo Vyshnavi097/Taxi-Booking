@@ -42,7 +42,7 @@ public class BookingService {
                       .taxi(taxi)
                       .pickupLocation(bookingRequest.getPickupLocation())
                       .dropoffLocation(bookingRequest.getDropoffLocation())
-                      .bookingTime(LocalDateTime.now())
+                     // .bookingTime(LocalDateTime.parse(LocalDateTime.now().toString()))
                       .status(Status.BOOKED)
                       .fare(amount)
               .build();

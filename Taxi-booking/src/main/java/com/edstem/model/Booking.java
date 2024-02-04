@@ -40,7 +40,7 @@ public class Booking {
 
      private double fare;
 
-     private LocalDateTime bookingTime;
+     //private LocalDateTime bookingTime;
 
     @Enumerated(EnumType.STRING)
     private Status status;
