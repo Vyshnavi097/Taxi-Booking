@@ -3,6 +3,7 @@ package com.edstem.controller;
 import com.edstem.contract.request.BookingRequest;
 import com.edstem.contract.response.BookingResponse;
 import com.edstem.contract.response.CancelBookingResponse;
+import com.edstem.contract.response.TaxiResponse;
 import com.edstem.service.BookingService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -39,4 +42,10 @@ public class BookingController {
     public CancelBookingResponse cancelById(@RequestParam long bookingId,@RequestParam long userId){
         return bookingService.cancelById(bookingId,userId);
   }
+
+    @GetMapping("/nearest")
+    public List<TaxiResponse> findNearest(
+            @RequestParam Long userId, @RequestParam String pickupLocation) {
+        return bookingService.findNearest(userId, pickupLocation);
+    }
 }

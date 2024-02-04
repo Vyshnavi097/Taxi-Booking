@@ -4,6 +4,7 @@ import com.edstem.constant.Status;
 import com.edstem.contract.request.BookingRequest;
 import com.edstem.contract.response.BookingResponse;
 import com.edstem.contract.response.CancelBookingResponse;
+import com.edstem.contract.response.TaxiResponse;
 import com.edstem.service.BookingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -92,5 +96,21 @@ public class BookingControllerTest {
                 .andExpect(content().json(new ObjectMapper().writeValueAsString(response)));
 
         verify(bookingService, times(1)).cancelById(bookingId, userId);
+    }
+    @Test
+    void testFindNearest() throws Exception {
+        Long userId = 1L;
+        String pickupLocation = "payyanur";
+        List<TaxiResponse> taxiResponses = new ArrayList<>();
+
+        when(bookingService.findNearest(userId, pickupLocation)).thenReturn(taxiResponses);
+
+        mockMvc.perform(
+                        get("/nearest")
+                                .param("userId", String.valueOf(userId))
+                                .param("pickupLocation", pickupLocation))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(new ObjectMapper().writeValueAsString(taxiResponses)));
     }
 }

@@ -17,6 +17,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,6 +30,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 
 public class BookingServiceTest {
     private BookingRepository bookingRepository;
@@ -61,7 +65,7 @@ public class BookingServiceTest {
                         .taxi(taxi)
                         .pickupLocation(request.getPickupLocation())
                         .dropoffLocation(request.getDropoffLocation())
-                        //.bookingTime(LocalDateTime.parse(LocalDateTime.now().toString()))
+                        .bookingTime(LocalDateTime.parse(LocalDateTime.now().toString()))
                         .fare(expense)
                         .status(Status.BOOKED)
                         .build();
@@ -117,6 +121,21 @@ public class BookingServiceTest {
         verify(usersRepository, times(1)).findById(userId);
         verify(bookingRepository, times(1)).findById(bookingId);
         verify(bookingRepository, times(1)).deleteById(bookingId);
+    }
+    @Test
+    void testFindLocation() {
+        Long userId = 1L;
+        String location = "pickupLocation";
+        Users user = new Users();
+
+        when(taxiRepository.findAll()).thenReturn(new ArrayList<>());
+        when(usersRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        assertThrows(
+                EntityNotFoundException.class, () -> bookingService.findNearest(userId, location));
+
+        verify(usersRepository).findById(userId);
+        verify(taxiRepository).findAll();
     }
 
 }
