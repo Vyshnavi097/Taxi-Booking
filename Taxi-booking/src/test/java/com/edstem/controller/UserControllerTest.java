@@ -88,6 +88,23 @@ public class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(new ObjectMapper().writeValueAsString(expectedResponse)));
     }
+    @Test
+    void testAccountBalance() throws Exception {
+        AccountBalanceResponse buildResult = AccountBalanceResponse.builder().accountBalance(10.0d).build();
+        when(userService.accountBalance(anyLong(), Mockito.<AccountBalanceRequest>any())).thenReturn(buildResult);
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.put("/v1/{userId}", 1L)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content(objectMapper.writeValueAsString(new AccountBalanceRequest()));
+        MockMvcBuilders.standaloneSetup(userController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.content().string("{\"accountBalance\":10.0}"));
+    }
 
 
 
