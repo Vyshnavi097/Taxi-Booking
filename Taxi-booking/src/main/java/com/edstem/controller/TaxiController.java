@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping
+
 public class TaxiController {
     private final TaxiService taxiService;
 @PostMapping("/taxi")

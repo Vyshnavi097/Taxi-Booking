@@ -1,16 +1,17 @@
-package com.edstem.contract.request;
+package com.edstem.contract.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@EqualsAndHashCode
+@Data
 @Getter
-public class AccountBalanceRequest {
-    private double accountBalance;
+@Builder
+public class LoginResponse {
+    private String token;
 }

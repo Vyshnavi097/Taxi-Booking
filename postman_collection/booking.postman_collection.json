@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "b6ce80d7-f2d6-4f3c-999f-7a61d4d78712",
+		"name": "booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30590501",
+		"_collection_link": "https://grey-satellite-323625.postman.co/workspace/New-Team-Workspace~912cba8b-6b51-43bf-998e-bae1137a8121/collection/30590501-b6ce80d7-f2d6-4f3c-999f-7a61d4d78712?action=share&source=collection_link&creator=30590501"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"dev\",\r\n    \"password\":\"dev@123\",\r\n    \"email\":\"dev@gmail.com\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "balance update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZGV2IiwiaWQiOjUsInN1YiI6ImRldkBnbWFpbC5jb20iLCJpYXQiOjE3MDcyMDczMDAsImV4cCI6MTcwNzI0MzMwMH0._SbnAjawxk_SwC5LhglIcploq66vbQ_Dzad8b-xypYo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountBalance\":\"2000.0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bookingTaxi",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZGV2IiwiaWQiOjUsInN1YiI6ImRldkBnbWFpbC5jb20iLCJpYXQiOjE3MDcyMDczMDAsImV4cCI6MTcwNzI0MzMwMH0._SbnAjawxk_SwC5LhglIcploq66vbQ_Dzad8b-xypYo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"driverName\": \"eee\",\r\n    \"licenseNumber\": \"dddd\",\r\n    \"currentLocation\": \"eee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taxi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taxi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidnlzaCIsImlkIjoyLCJzdWIiOiJ2eXNoQGdtYWlsLmNvbSIsImlhdCI6MTcwNzEyNTYyMiwiZXhwIjoxNzA3MjEyMDIyfQ.2wgeadCFH7r4JYACdcM9Td-pawSREKpSOhzldRIheGg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickupLocation\":\"payyanur\",\r\n    \"dropoffLocation\":\"annur\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking?userId=2&taxiId=2&distance=2.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						},
+						{
+							"key": "taxiId",
+							"value": "2"
+						},
+						{
+							"key": "distance",
+							"value": "2.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cancel?userId=1&bookingId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cancel"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "bookingId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"dev@123\",\r\n    \"email\":\"dev@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
